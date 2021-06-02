@@ -1,0 +1,75 @@
+int ir1=D0;
+int ir2=D1;
+int ir3=D2;
+int ir4=D3;
+int rd1=D4;
+int rd2=D5;
+int gr1=D6;
+int gr2=D7;
+void setup() {
+  pinMode(ir1,INPUT);
+  pinMode(ir2,INPUT);
+  pinMode(ir3,INPUT);
+  pinMode(ir4,INPUT);
+  pinMode(rd1,OUTPUT);
+  pinMode(rd2,OUTPUT);
+  pinMode(gr1,OUTPUT);
+  pinMode(gr2,OUTPUT);
+  Serial.begin(115200);
+}
+void loop() {
+  int status1=digitalRead(ir1);
+  int status2=digitalRead(ir2);
+  int status3=digitalRead(ir3);
+  int status4=digitalRead(ir4);
+  /*
+  digitalWrite(rd1,LOW);
+  digitalWrite(rd2,LOW);
+  digitalWrite(gr2,LOW);
+  digitalWrite(gr1,LOW);*/
+ 
+  if(status1==0){
+    if(status3==0){
+      if(status2==0){
+        if(status4==0){
+          digitalWrite(rd1,HIGH);
+          digitalWrite(rd2,LOW);
+          digitalWrite(gr2,HIGH);
+          digitalWrite(gr1,LOW);
+          delay(1000);
+          digitalWrite(rd2,HIGH);
+          digitalWrite(rd1,LOW);
+          digitalWrite(gr1,HIGH);
+          digitalWrite(gr2,LOW);
+        }
+        else{
+          digitalWrite(rd1,HIGH);
+          digitalWrite(rd2,LOW);
+          digitalWrite(gr2,HIGH);
+          digitalWrite(gr1,LOW);
+          //delay(1000);
+        }
+      }
+      else{
+          digitalWrite(rd2,HIGH);
+          digitalWrite(rd1,LOW);
+          digitalWrite(gr1,HIGH);
+          digitalWrite(gr2,LOW);
+      }
+      }
+      else{
+        digitalWrite(rd1,HIGH);
+          digitalWrite(rd2,LOW);
+          digitalWrite(gr2,HIGH);
+          digitalWrite(gr1,LOW);
+          delay(1000);
+      }
+    }
+    else{
+        digitalWrite(rd2,HIGH);
+        digitalWrite(rd1,LOW);
+        digitalWrite(gr1,HIGH);
+        digitalWrite(gr2,LOW);
+         //delay(1000);
+      }
+}
